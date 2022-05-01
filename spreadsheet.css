@@ -1,0 +1,10 @@
+.tableHeader{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    justify-content: center;
+    align-items: center;
+}
+.tableEntry{
+    display:inline-grid;
+    grid-template-columns: repeat(7,1fr);
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="spreadsheet.js"></script>
+    <link href="spreadsheet.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpreadSheet</title>
+</head>
+<body onload="Display()">
+    
+ <div class="tableHeader">
+     <div >NAME</div>
+     <div >REGISTER NUMBER</div>
+     <div >DATE OF BIRTH</div>
+     <div >AGE</div>
+     <div >MARK1</div>
+     <div >MARK2</div>
+     <div >TOTAL</div>
+ </div>
+
+<div id="tableEntry" >
+</div>
+<script>
+    var x =" ",i;
+    for(i=0;i<=50;i++){
+    x = x + `<input type="text" id="name${i}" class="info"/>
+    <input type="text" id="regNo${i}" class="info"/>
+    <input type="date" id="dob${i}" class="info"/>
+    <p id="age${i}"></p>
+    <input type="text" id="mark1${i}" class="info"/>
+    <input type="text" id="mark2${i}" class="info"/>
+    <p id="total${i}"></p>
+    <input type="button" id="save${i}" onclick="Click(${i})" value="Save" class="info"/>
+    <button id="del${i}" onclick="Delete(${i})">Delete</button>`
+    }
+    document.getElementById("tableEntry").innerHTML=x;
+</script>
+
+
+     
+</body>
+</html>
