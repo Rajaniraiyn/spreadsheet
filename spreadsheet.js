@@ -20,7 +20,7 @@ function Click(index){
                   age: Age($("dob"+index).value),
                   mark1: $("mark1"+index).value,
                   mark2: $("mark2"+index).value,
-                  total: $("mark1"+index).value + $("mark2"+index).value
+                  total: parseFloat(parseFloat($("mark1"+index).value) + parseFloat($("mark2"+index).value))
       });
     
     let dataarr = data.filter(element => {
