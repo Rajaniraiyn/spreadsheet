@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="spreadsheet.js"></script>
-    <link href="spreadsheet.css" rel="stylesheet"/>
+    <link href="spreadsheet.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpreadSheet</title>
 </head>
+
 <body onload="Display()">
-    
- <div class="tableHeader">
-     <div >NAME</div>
-     <div >REGISTER NUMBER</div>
-     <div >DATE OF BIRTH</div>
-     <div >AGE</div>
-     <div >MARK1</div>
-     <div >MARK2</div>
-     <div >TOTAL</div>
- </div>
-
-<div id="tableEntry" >
-</div>
-<script>
-    var x =" ",i;
-    for(i=0;i<=50;i++){
-    x = x + `<input type="text" id="name${i}" class="info"/>
-    <input type="text" id="regNo${i}" class="info"/>
-    <input type="date" id="dob${i}" class="info"/>
-    <p id="age${i}"></p>
-    <input type="text" id="mark1${i}" class="info"/>
-    <input type="text" id="mark2${i}" class="info"/>
-    <p id="total${i}"></p>
-    <input type="button" id="save${i}" onclick="Click(${i})" value="Save" class="info"/>
-    <button id="del${i}" onclick="Delete(${i})">Delete</button>`
-    }
-    document.getElementById("tableEntry").innerHTML=x;
-</script>
 
 
-     
+    <div class="tableHeader">
+        <div>NAME</div>
+        <div>REGISTER NUMBER</div>
+        <div>DATE OF BIRTH</div>
+        <div>AGE</div>
+        <div>MARK1</div>
+        <div>MARK2</div>
+        <div>TOTAL</div>
+    </div>
+
+    <div id="tableEntry">
+
+    </div>
+    <script>
+        let tableEntry = $("tableEntry");
+
+        for (let i = 0; i < 50; i++) {
+            tableEntry.innerHTML += `
+            <input type="text" id="name${i}" class="info" onkeydown="onEnter(event, 'regNo${i}')"/>
+            <input type="text" id="regNo${i}" class="info" onkeydown="onEnter(event, 'dob${i}')"/>
+            <input type="date" id="dob${i}" class="info" onkeydown="onEnter(event, 'mark1${i}')"/>
+            <p id="age${i}"></p>
+            <input type="text" id="mark1${i}" class="info" onkeydown="onEnter(event, 'mark2${i}')"/>
+            <input type="text" id="mark2${i}" class="info" onkeydown="onEnter(event, 'save${i}')"/>
+            <div>
+                <p id="total${i}"></p>
+                <input type="button" id="save${i}" onclick="Click(${i})" value="Save" class="info" onkeydown="onEnter(event, 'del${i}')"/>
+                <button id="del${i}" onclick="Delete(${i})" onkeydown="onEnter(event, 'name${i + 1}')">Delete</button>
+            </div>
+    `
+        }
+    </script>
+
+
+
 </body>
+
 </html>
