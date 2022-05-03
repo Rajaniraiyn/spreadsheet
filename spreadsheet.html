@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <script src="spreadsheet.js"></script>
     <link href="spreadsheet.css" rel="stylesheet" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Fira+Sans:wght@100;500&family=Fredoka:wght@300&family=Grape+Nuts&family=Libre+Baskerville&family=Plus+Jakarta+Sans:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SpreadSheet</title>
-</head>
+  </head>
 
-<body onload="Display()">
-
-
-    <div class="tableHeader">
-        <div>NAME</div>
-        <div>REGISTER NUMBER</div>
-        <div>DATE OF BIRTH</div>
-        <div>AGE</div>
-        <div>MARK1</div>
-        <div>MARK2</div>
-        <div>TOTAL</div>
+  <body onload="Display()">
+    <div id="table">
+      <div class="tableHeader">
+        <div class="heading">NAME</div>
+        <div class="heading">REGISTER NUMBER</div>
+        <div class="heading">DATE OF BIRTH</div>
+        <div class="heading">AGE</div>
+        <div class="heading">MARK1</div>
+        <div class="heading">MARK2</div>
+        <div class="heading">TOTAL</div>
+      </div>
+      <hr class="line" />
+      <div id="tableEntry"></div>
     </div>
 
-    <div id="tableEntry">
-
-    </div>
+    <img src="bg.jpg" id="bg" alt="" />
     <script>
-        let tableEntry = $("tableEntry");
+      let tableEntry = $("tableEntry");
 
-        for (let i = 0; i < 50; i++) {
-            tableEntry.innerHTML += `
-            <input type="text" id="name${i}" class="info" onkeydown="onEnter(event, 'regNo${i}')"/>
-            <input type="text" id="regNo${i}" class="info" onkeydown="onEnter(event, 'dob${i}')"/>
+      for (let i = 0; i < 50; i++) {
+        tableEntry.innerHTML += `
+            <input type="text" size="10vw" pattern="^[a-zA-Z ]{3,30}$" id="name${i}" class="info" onkeydown="onEnter(event, 'regNo${i}')"/>
+            <input type="text" pattern="^[0-9]{2}[A-Z]{3}[0-9]{3}$" id="regNo${i}" class="info" onkeydown="onEnter(event, 'dob${i}')"/>
             <input type="date" id="dob${i}" class="info" onkeydown="onEnter(event, 'mark1${i}')"/>
-            <p id="age${i}"></p>
-            <input type="text" id="mark1${i}" class="info" onkeydown="onEnter(event, 'mark2${i}')"/>
-            <input type="text" id="mark2${i}" class="info" onkeydown="onEnter(event, 'save${i}')"/>
-            <div>
-                <p id="total${i}"></p>
-                <input type="button" id="save${i}" onclick="Click(${i})" value="Save" class="info" onkeydown="onEnter(event, 'del${i}')"/>
-                <button id="del${i}" onclick="Delete(${i})" onkeydown="onEnter(event, 'name${i + 1}')">Delete</button>
-            </div>
-    `
-        }
+            <input type="number" id="age${i}"/>
+            <input type="number" min=0 max=100 id="mark1${i}" class="info" onkeydown="onEnter(event, 'mark2${i}')"/>
+            <input type="number" min=0 max=100 id="mark2${i}" class="info" onkeydown="onEnter(event, 'save${i}')"/>
+            <input type="number" id="total${i}" />   
+            
+            <button id="save${i}" onclick="Click(${i})" class="info" onkeydown="onEnter(event, 'del${i}')">Save</button>
+            <button id="del${i}" onclick="Delete(${i})" onkeydown="onEnter(event, 'name${
+          i + 1
+        }')">Delete</button>
+        
+    `;
+      }
     </script>
-
-
-
-</body>
-
+  </body>
 </html>
