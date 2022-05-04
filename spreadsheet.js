@@ -24,7 +24,7 @@ function Click(index) {
             age: Age($("dob" + index).value),
             mark1: $("mark1" + index).value,
             mark2: $("mark2" + index).value,
-            total: $("mark1" + index).value + $("mark2" + index).value,
+            total: +$("mark1" + index).value + +$("mark2" + index).value,
             i: index
         };
 
@@ -68,27 +68,35 @@ function Click(index) {
     Display();
 }
 function Delete(index) {
-    $("name" + index).value = $("regNo" + index).value = $("dob" + index).value = $("age" + index).value = $("mark1" + index).value = $("mark2" + index).value = $("total" + index).value = " ";
+    $("name" + index).value = $("regNo" + index).value = $("dob" + index).value = $("age" + index).value = $("mark1" + index).value = $("mark2" + index).value = $("total" + index).value = null;
     let dataarray = JSON.parse(localStorage.getItem("entry"));
-    dataarray.splice(index, 1);
+    dataarray = dataarray.map(
+        element => (element == null || element.i == index) ? null : element
+    )
     localStorage.setItem("entry", JSON.stringify(dataarray));
-    Display();
 }
 
 function Display() {
 
-    let dataarray = JSON.parse(localStorage.getItem("entry"));
+    let dataarray = JSON.parse(localStorage.getItem("entry"))
     if (dataarray != null) {
-    dataarray.forEach((element, i) => {
-        $("name" + element.i).value = element.name;
-        $("regNo" + element.i).value = element.regNo;
-        $("dob" + element.i).value = element.dob;
-        $("age" + element.i).value = element.age;
-        $("mark1" + element.i).value = element.mark1;
-        $("mark2" + element.i).value = element.mark2;
-        $("total" + element.i).value = element.total;
-    });
-}
+
+        dataarray
+            .filter(
+                (element) => element != null
+            )
+            .forEach(
+                (element, i) => {
+                    $("name" + element.i).value = element.name;
+                    $("regNo" + element.i).value = element.regNo;
+                    $("dob" + element.i).value = element.dob;
+                    $("age" + element.i).value = element.age;
+                    $("mark1" + element.i).value = element.mark1;
+                    $("mark2" + element.i).value = element.mark2;
+                    $("total" + element.i).value = element.total;
+                }
+            );
+    }
 }
 
 function onEnter({ key, target }, control) {
@@ -96,8 +104,4 @@ function onEnter({ key, target }, control) {
         if (control.includes("del")) target.click();
         else $(control).focus();
     }
-}
-for(let i =0;i<50;i++){
-    document.getElementById("age"+i).readOnly = true;
-    document.getElementById("total"+i).readOnly = true;
 }
