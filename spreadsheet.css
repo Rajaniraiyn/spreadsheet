@@ -120,8 +120,7 @@ button:hover {
   transform: translate(-3px, -3px);
 }
 button:active {
-  position: relative;
-  top: 1px;
+  background: white;
 }
 .line {
   position: absolute;
@@ -140,4 +139,24 @@ button:active {
   border-right: 5px groove #918a8a;
   padding-right: 40px;
   height: 30px;
+}
+
+.button {
+  position: absolute;
+  right: 20%;
+  background: linear-gradient(to bottom, rgb(19, 172, 255) 5%, #9ffff9 100%);
+  box-shadow: inset 0px 1px 0px 0px #c2ffff;
+}
+.button:hover {
+  background: linear-gradient(to bottom, #9ffff9 5%, rgb(19, 172, 255) 100%);
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -10px 10px -10px #000000 inset;
+  padding-bottom: 10px;
 }
