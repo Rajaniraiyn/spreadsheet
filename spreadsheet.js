@@ -113,7 +113,7 @@ function Download() {
 
     for (let i = 0; i < 50; i++) {
 
-        if (i > dataarr.length) break;
+        if (i >= dataarr.length) break;
 
         let element = dataarr[i];
 
