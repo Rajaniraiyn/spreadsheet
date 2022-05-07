@@ -105,3 +105,32 @@ function onEnter({ key, target }, control) {
         else $(control).focus();
     }
 }
+
+
+function Download() {
+    let dataarr = JSON.parse(localStorage.getItem("entry"));
+    let csv = "Name,RegNo,DOB,Age,Mark1,Mark2,Total\n";
+
+    for (let i = 0; i < 50; i++) {
+
+        if (i > dataarr.length) break;
+
+        let element = dataarr[i];
+
+        while (element.i != i) {
+            csv += ",,,,,,\n";
+            i++;
+        }
+        
+        csv += `${element.name},${element.regNo},${element.dob},${element.age},${element.mark1},${element.mark2},${element.total}\n`
+    }
+
+    const file = new Blob(
+        [csv],
+        { type: 'text/csv' }
+    );
+
+    const fileURL = URL.createObjectURL(file);
+
+    window.location.href = fileURL;
+}
