@@ -41,13 +41,13 @@
             <input type="text" size="10vw" pattern="^[a-zA-Z ]{3,30}$" id="name${i}" class="info" onkeydown="onEnter(event, 'regNo${i}')"/>
             <input type="text" pattern="^[0-9]{2}[A-Z]{3}[0-9]{3}$" id="regNo${i}" class="info" onkeydown="onEnter(event, 'dob${i}')"/>
             <input type="date" id="dob${i}" class="info" onkeydown="onEnter(event, 'mark1${i}')"/>
-            <input type="number" id="age${i}" readonly />
+            <input type="number" id="age${i}" class="info" readonly />
             <input type="number" min=0 max=100 id="mark1${i}" class="info" onkeydown="onEnter(event, 'mark2${i}')"/>
             <input type="number" min=0 max=100 id="mark2${i}" class="info" onkeydown="onEnter(event, 'save${i}')"/>
-            <input type="number" id="total${i}" readonly />   
+            <input type="number" id="total${i}" class="info" readonly />   
             
-            <button id="save${i}" onclick="Click(${i})" class="info" onkeydown="onEnter(event, 'del${i}')">Save</button>
-            <button id="del${i}" onclick="Delete(${i})" onkeydown="onEnter(event, 'name${
+            <button id="save${i}" onclick="Click(${i})" class="tableButton" onkeydown="onEnter(event, 'del${i}')">Save</button>
+            <button id="del${i}" onclick="Delete(${i})" class="tableButton" onkeydown="onEnter(event, 'name${
           i + 1
         }')">Delete</button>
         

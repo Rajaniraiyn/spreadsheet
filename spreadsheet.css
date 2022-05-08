@@ -67,8 +67,7 @@ body {
   -webkit-box-shadow: 0px 7px 68px 16px rgba(0, 0, 0, 0.71);
   -moz-box-shadow: 0px 7px 68px 16px rgba(0, 0, 0, 0.71);
   box-shadow: 0px 7px 68px 16px rgba(0, 0, 0, 0.71);
-
-  margin: 7vw 4vw;
+  margin: 5vw 0vw 0vw 0vw;
 }
 
 ::-webkit-scrollbar {
@@ -97,6 +96,7 @@ input[type="date"] {
 input[type="number"] {
   width: 5vw;
 }
+
 button {
   font-size: 1vw;
   padding: 0.4vw;
@@ -123,12 +123,12 @@ button:active {
   background: white;
 }
 .line {
-  position: absolute;
+  position: relative;
   height: 10px;
   border: 0;
   width: 65vw;
-  right: 15%;
-  top: 5.5%;
+  left: 10%;
+  top: 5%;
   box-shadow: 0 10px 10px -10px #000000 inset;
 }
 .tableEntry div {
@@ -136,9 +136,10 @@ button:active {
   top: 100px;
 }
 .heading {
-  border-right: 5px groove #918a8a;
-  padding-right: 40px;
+  border-right: 0.5vw groove #918a8a;
+  padding-right: 2.3vw;
   height: 30px;
+  font-size: 1vw;
 }
 
 .button {
@@ -159,4 +160,26 @@ h1 {
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);
   box-shadow: 0 -10px 10px -10px #000000 inset;
   padding-bottom: 10px;
+  font-size: 2vw;
+}
+@media only screen and (max-width: 630px) {
+  input:not([type="button"]) {
+    height: 0.5vh;
+  }
+  #tableEntry {
+    display: grid;
+    grid-template-columns: repeat(3, 2px) 2px repeat(3, 2px) 0px 0px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    row-gap: 5px;
+    text-align: center;
+    padding: 5px 5px 5px 0px;
+  }
+  #tableEntry:not(.tableButton) {
+    gap: 30px;
+  }
+  #tableEntry .tableButton {
+    padding-right: 2px;
+  }
 }
